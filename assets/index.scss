@@ -49,3 +49,249 @@ nav {
     }
   }
 }
+
+// 3) LAVORARE CON LE PSEUDOCLASSI
+
+// .buttons button.one {
+//   color: white;
+//   background-color: red;
+// }
+
+// .buttons button.one:hover {
+//   color: rgb(255, 0, 80);
+//   background-color: white;
+// }
+
+// .buttons button.two {
+//   color: green;
+//   background-color: black;
+// }
+
+// .buttons button.two:hover {
+//   background-color: rgb(0, 255, 80);
+// }
+
+.buttons {
+  button.one {
+    color: white;
+    background-color: red;
+    // & in questo caso vuole dire: .buttons button.one
+    &:hover {
+      // così gestisco l'hover del selettore corrente
+      color: rgb(255, 0, 80);
+      background-color: white;
+    }
+  }
+  button.two {
+    color: green;
+    background-color: black;
+    &:hover {
+      background-color: rgb(0, 255, 80);
+    }
+  }
+}
+
+#paragrafi {
+  width: 500px;
+  p {
+    &:nth-of-type(1) {
+      color: green;
+    }
+    &:nth-of-type(2) {
+      color: red;
+    }
+  }
+}
+
+// 4) UTILIZZARE PREFISSI COMUNI PER PROPRIETÀ SIMILI
+// #main {
+//   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+//   font-size: 1.3em;
+//   font-weight: bold;
+//   font-style: italic;
+// }
+
+// ...diventa:
+#main {
+  font: {
+    family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    size: 1.3em;
+    weight: bold;
+    style: italic;
+  }
+}
+
+// 5) VARIABILI
+// le variabili in SASS servono per MEMORIZZARE dei valori.
+// i valori che salviamo nelle variabili possono venire facilmente RIUTILIZZATI
+// nelle regole di stile che scriviamo
+// concettualmente sono più simili alle "costanti" (perchè raramente le ri-assegneremo)
+
+// cosa possiamo salvare in una variabile SASS? quali sono i "tipi" di questo linguaggio?
+
+// - valori numerici (1, 50, -10, 10px, 1.2em, 30%, etc.)
+// - stringhe ("ciao")
+// - colori (red, #ffcc00, rgb(255, 80, 80), rgba(255, 80, 80, 0.5)
+// - booleani (true/false)
+// - null
+// - valori combinati per proprietà "shorcut" (1px solid black)
+// - liste di valori (10px, 12px, 16px) -> un po' come gli array in JS
+// - mappe di coppie chiave/valore -> un po' come gli oggetti in JS
+
+// es.
+$my-main-margin: 36.5px;
+
+h1 {
+  margin-left: $my-main-margin;
+}
+
+aside {
+  margin-left: $my-main-margin;
+}
+
+$primary-color: rgb(5, 130, 130);
+$secondary-color: #f0f0f0;
+
+p:nth-of-type(2) {
+  color: $primary-color;
+}
+
+$main-border: 2px solid $primary-color;
+
+body {
+  border: $main-border;
+}
+
+// SASS sa utilizzare anche operatori matematici, di comparazione, logici etc.
+// +, -, *, /
+// >, >=, <, <=, ==, !=, !
+
+#main {
+  margin-left: $my-main-margin - 5px;
+}
+
+// 5) MIXINS
+// un MIXIN è un blocco di regole CSS richiamabile con un singolo nome
+
+$my-padding: 10px;
+
+@mixin generic-buttons-styles {
+  padding: $my-padding;
+  border: 2px solid black;
+  border-radius: 25px;
+}
+
+.other-buttons {
+  .three {
+    @include generic-buttons-styles();
+    background-color: brown;
+    color: white;
+  }
+  .four {
+    @include generic-buttons-styles();
+    background-color: aquamarine;
+  }
+}
+
+// MIXIN AVANZATO
+// un mixin è simile concettualmente ad una "funzione" in JS
+// perchè richiama un blocco di istruzioni / stili in un colpo solo
+// tant'è che l'invocazione prevede anche le ()
+
+// è possibile PARAMETRIZZARE i mixin!
+@mixin section-styles($different-background: #fff) {
+  // questo mixin prevede addirittura un background-color, ma poichè
+  // ogni sezione l'avrà diverso lo "parametrizzo", questo mi obbliga
+  // a doverlo passare esplicitamente ad ogni invocazione del mixin
+  // è anche possibile dare un valore di default a questo parametro con i :
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: $main-border;
+  background-color: $different-background;
+}
+
+#section-1 {
+  @include section-styles(aqua);
+  padding-left: 2em;
+}
+
+#section-2 {
+  @include section-styles(yellow);
+  line-height: 1.5;
+}
+
+#section-3 {
+  @include section-styles();
+  line-height: 1.5;
+}
+
+// 6) INTERPOLAZIONI DI STRINGHE
+
+// es. in JS
+// let str1 = 'ciao'
+// let str2 = 'epicode'
+
+// console.log(str1 + ' sono ' + str2) // 'ciao sono epicode'
+// console.log(`${str1} sono ${str2}`) // 'ciao epicode'
+
+@mixin font-interpolation($property, $value) {
+  font-#{$property}: $value;
+  // alla prima invocazione tornerà "font-size: 1.5em"
+  // alla seconda invocazione tornerà "font-weight: bold"
+}
+
+.element-1 {
+  // font-size: 1.5em; -> lo riceverò dal mixin
+  @include font-interpolation('size', 1.5em);
+  color: beige;
+  background-color: blue;
+}
+
+.element-2 {
+  // font-weight: bold; -> lo riceverò dal mixin
+  @include font-interpolation('weight', bold);
+  margin-top: $my-main-margin;
+}
+
+// 7) C I C L I
+// in SASS è possibile utilizzare dei cicli per automatizzare la generazione
+// di STILI e CLASSI
+$main-sizes: 8px, 16px, 24px, 32px;
+$main-colors: red, blue, yellow;
+
+// un CICLO in SASS si dichiara con la direttiva @each
+@each $single-size in $main-sizes {
+  // questo ciclo ora scorrerà tutti gli elementi di $main-sizes
+  // chiamerà il singolo valore ciclato $single-size
+  // $single-size vale 8px al primo ciclo, 16px al secondo etc.
+  // e ora GENERO CLASSI CSS
+  .text-#{$single-size} {
+    font-size: $single-size;
+  }
+}
+
+// .text-8px .text-16px .text-24px .text-32px
+
+@each $color in $main-colors {
+  @each $size in $main-sizes {
+    .text-#{$size}-#{$color} {
+      color: $color;
+      font-size: $size;
+    }
+  }
+}
+
+$map-sizes: (
+  sm: 8px,
+  normal: 16px,
+  lg: 24px,
+  xl: 32px,
+);
+
+@each $breakpoint, $value in $map-sizes {
+  .margin-#{$breakpoint} {
+    margin: $value;
+  }
+}
+
+// .margin-sm .margin-normal .margin-lg .margin-xl

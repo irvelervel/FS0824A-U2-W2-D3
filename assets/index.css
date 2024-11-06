@@ -16,4 +16,198 @@ nav ul {
   nav ul {
     flex-direction: row;
   }
+}
+
+.buttons button.one {
+  color: white;
+  background-color: red;
+}
+.buttons button.one:hover {
+  color: rgb(255, 0, 80);
+  background-color: white;
+}
+.buttons button.two {
+  color: green;
+  background-color: black;
+}
+.buttons button.two:hover {
+  background-color: rgb(0, 255, 80);
+}
+
+#paragrafi {
+  width: 500px;
+}
+#paragrafi p:nth-of-type(1) {
+  color: green;
+}
+#paragrafi p:nth-of-type(2) {
+  color: red;
+}
+
+#main {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.3em;
+  font-weight: bold;
+  font-style: italic;
+}
+
+h1 {
+  margin-left: 36.5px;
+}
+
+aside {
+  margin-left: 36.5px;
+}
+
+p:nth-of-type(2) {
+  color: rgb(5, 130, 130);
+}
+
+body {
+  border: 2px solid rgb(5, 130, 130);
+}
+
+#main {
+  margin-left: 31.5px;
+}
+
+.other-buttons .three {
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 25px;
+  background-color: brown;
+  color: white;
+}
+.other-buttons .four {
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 25px;
+  background-color: aquamarine;
+}
+
+#section-1 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 2px solid rgb(5, 130, 130);
+  background-color: aqua;
+  padding-left: 2em;
+}
+
+#section-2 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 2px solid rgb(5, 130, 130);
+  background-color: yellow;
+  line-height: 1.5;
+}
+
+#section-3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 2px solid rgb(5, 130, 130);
+  background-color: #fff;
+  line-height: 1.5;
+}
+
+.element-1 {
+  font-size: 1.5em;
+  color: beige;
+  background-color: blue;
+}
+
+.element-2 {
+  font-weight: bold;
+  margin-top: 36.5px;
+}
+
+.text-8px {
+  font-size: 8px;
+}
+
+.text-16px {
+  font-size: 16px;
+}
+
+.text-24px {
+  font-size: 24px;
+}
+
+.text-32px {
+  font-size: 32px;
+}
+
+.text-8px-red {
+  color: red;
+  font-size: 8px;
+}
+
+.text-16px-red {
+  color: red;
+  font-size: 16px;
+}
+
+.text-24px-red {
+  color: red;
+  font-size: 24px;
+}
+
+.text-32px-red {
+  color: red;
+  font-size: 32px;
+}
+
+.text-8px-blue {
+  color: blue;
+  font-size: 8px;
+}
+
+.text-16px-blue {
+  color: blue;
+  font-size: 16px;
+}
+
+.text-24px-blue {
+  color: blue;
+  font-size: 24px;
+}
+
+.text-32px-blue {
+  color: blue;
+  font-size: 32px;
+}
+
+.text-8px-yellow {
+  color: yellow;
+  font-size: 8px;
+}
+
+.text-16px-yellow {
+  color: yellow;
+  font-size: 16px;
+}
+
+.text-24px-yellow {
+  color: yellow;
+  font-size: 24px;
+}
+
+.text-32px-yellow {
+  color: yellow;
+  font-size: 32px;
+}
+
+.margin-sm {
+  margin: 8px;
+}
+
+.margin-normal {
+  margin: 16px;
+}
+
+.margin-lg {
+  margin: 24px;
+}
+
+.margin-xl {
+  margin: 32px;
 }/*# sourceMappingURL=index.css.map */
