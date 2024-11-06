@@ -1,0 +1,19 @@
+body {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+nav {
+  margin-top: 10px;
+}
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (min-width: 576px) {
+  nav ul {
+    flex-direction: row;
+  }
+}/*# sourceMappingURL=index.css.map */
