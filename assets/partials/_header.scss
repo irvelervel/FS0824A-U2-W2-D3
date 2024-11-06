@@ -1,0 +1,18 @@
+// mettete gli stili dell'header
+
+nav {
+  display: block;
+  ul {
+    display: flex;
+    flex-direction: column;
+    @media screen and (min-width: 576px) {
+      flex-direction: row;
+    }
+    li {
+      a {
+        text-decoration: none;
+        color: $primary;
+      }
+    }
+  }
+}

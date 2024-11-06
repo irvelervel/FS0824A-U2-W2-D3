@@ -1,0 +1,9 @@
+// qui dentro non scriverò regole di stile individuali, ma accorperò semplicemente tutti i miei file PARTIALS
+
+// IMPORTIAMO TUTTO
+// negli import NON CI VA l'underscore! e neanche l'estensione
+@import './partials/reset';
+@import './partials/variables'; // che contiene $primary, va PRIMA di header!
+@import './partials/mixins';
+@import './partials/header';
+@import './partials/footer';

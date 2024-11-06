@@ -210,4 +210,12 @@ body {
 
 .margin-xl {
   margin: 32px;
+}
+
+.my-big-margin {
+  margin: 10px;
+}
+
+.my-small-margin {
+  margin: 5px;
 }/*# sourceMappingURL=index.css.map */
